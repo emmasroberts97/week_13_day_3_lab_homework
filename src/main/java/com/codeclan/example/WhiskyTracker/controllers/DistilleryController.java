@@ -19,7 +19,7 @@ public class DistilleryController {
     @GetMapping
     public ResponseEntity getDistilleriesAndRegions(
             @RequestParam(name="region", required = false) String region,
-            @RequestParam(name="age", required = false) Integer age
+            @RequestParam(name="whiskyAge", required = false) Integer age
     ){
         if (region != null){
             return new ResponseEntity(distilleryRepository.findDistilleryByRegion(region), HttpStatus.OK);
