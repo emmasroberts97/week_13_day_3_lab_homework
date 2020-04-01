@@ -23,11 +23,11 @@ public class WhiskyController {
             @RequestParam(name="age", required=false) Integer age,
             @RequestParam(name="region", required=false) String region
     ){
-        if (year != null){
+        if (year != null && distillery == null && age == null && region == null){
             return new ResponseEntity(whiskyRepository.findWhiskyByYear(year), HttpStatus.OK);
-        } else if (distillery != null && age != null){
+        } else if (distillery != null && age != null && year == null && region == null){
             return new ResponseEntity(whiskyRepository.findWhiskyByDistilleryNameAndAge(distillery, age), HttpStatus.OK);
-        } else if (region != null){
+        } else if (region != null && year == null && distillery == null && age == null){
             return new ResponseEntity(whiskyRepository.findWhiskyByDistilleryRegion(region), HttpStatus.OK);
         }
         return new ResponseEntity(whiskyRepository.findAll(), HttpStatus.OK);
